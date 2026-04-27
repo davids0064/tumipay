@@ -1,0 +1,11 @@
+%% Simple component diagram (Mermaid)
+
+flowchart LR
+  Client[Client App] -->|REST| API[API /api/v1/transactions]
+  API --> Service[Orchestrator Service]
+  Service --> Adapter[TransactionRepositoryAdapter]
+  Service --> Adapter2[ClientRepositoryAdapter]
+  Adapter --> JpaTransactionRepository[(JPA / DB)]
+  Adapter2 --> JpaClientRepository[(JPA / DB)]
+  JpaTransactionRepository --> DB[(Database)]
+  JpaClientRepository --> DB

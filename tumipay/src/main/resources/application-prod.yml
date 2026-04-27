@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/tumipaydb}
+    username: ${SPRING_DATASOURCE_USERNAME:tumipay}
+    password: ${SPRING_DATASOURCE_PASSWORD:tumipay123}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: false
+
+logging:
+  level:
+    root: INFO
