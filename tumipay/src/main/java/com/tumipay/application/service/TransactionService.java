@@ -56,7 +56,7 @@ public class TransactionService {
         Transaction transactionSavedDomain = transactionMapper.toDomain(savedTransaction);
         TransactionData transactionData = transactionMapper.toDto(transactionSavedDomain);
 
-        return new TransactionResponse("000", "Transacción creada exitosamente", transactionData);
+        return new TransactionResponse(com.tumipay.application.error.ErrorCode.SUCCESS.getCode(), com.tumipay.application.error.ErrorCode.SUCCESS.getMessage(), transactionData);
     }
 
     /**
@@ -69,7 +69,7 @@ public class TransactionService {
         Transaction domain = transactionMapper.toDomain(entity);
         TransactionData dto = transactionMapper.toDto(domain);
 
-        return new TransactionResponse("000", "Consulta exitosa", dto);
+        return new TransactionResponse(com.tumipay.application.error.ErrorCode.SUCCESS.getCode(), com.tumipay.application.error.ErrorCode.SUCCESS.getMessage(), dto);
     }
 
     /**
@@ -82,7 +82,7 @@ public class TransactionService {
         Transaction domain = transactionMapper.toDomain(entity);
         TransactionData dto = transactionMapper.toDto(domain);
 
-        return new TransactionResponse("000", "Consulta exitosa", dto);
+        return new TransactionResponse(com.tumipay.application.error.ErrorCode.SUCCESS.getCode(), com.tumipay.application.error.ErrorCode.SUCCESS.getMessage(), dto);
     }
 }
 

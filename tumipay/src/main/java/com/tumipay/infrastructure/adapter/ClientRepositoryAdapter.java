@@ -2,6 +2,7 @@ package com.tumipay.infrastructure.adapter;
 
 import com.tumipay.infrastructure.persistence.entity.ClientEntity;
 import com.tumipay.domain.repository.ClientRepository;
+import com.tumipay.infrastructure.persistence.repository.JpaClientRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -9,20 +10,20 @@ import java.util.Optional;
 @Component
 public class ClientRepositoryAdapter implements ClientRepository {
 
-    private final ClientRepository clientRepository;
+    private final JpaClientRepository jpaClientRepository;
 
-    public ClientRepositoryAdapter(ClientRepository jpaClientRepository) {
-        this.clientRepository = jpaClientRepository;
+    public ClientRepositoryAdapter(JpaClientRepository jpaClientRepository) {
+        this.jpaClientRepository = jpaClientRepository;
     }
 
     @Override
     public ClientEntity save(ClientEntity client) {
-        return clientRepository.save(client);
+        return jpaClientRepository.save(client);
     }
 
     @Override
     public Optional<ClientEntity> findById(Long clientId) {
-        return clientRepository.findById(clientId);
+        return jpaClientRepository.findById(clientId);
     }
 
 }

@@ -8,6 +8,22 @@ services:
       POSTGRES_PASSWORD: tumipay123
       POSTGRES_DB: tumipaydb
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tumipay:latest
+    container_name: tumipay_app
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tumipaydb
+      SPRING_DATASOURCE_USERNAME: tumipay
+      SPRING_DATASOURCE_PASSWORD: tumipay123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8081:8080"
+    restart: on-failure
