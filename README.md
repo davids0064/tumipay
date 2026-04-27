@@ -147,12 +147,6 @@ Análisis estático
 -----------------
 - Checkstyle está configurado en la compilación Maven y el CI ejecuta `mvn verify`. Actualmente Checkstyle genera un informe pero no falla la compilación por defecto (de este modo CI y la publicación de la imagen continúan). Se recomienda ajustar las reglas progresivamente y corregir las violaciones más relevantes.
 
-Seguridad y siguientes pasos
----------------------------
-- Proteger los endpoints de Actuator en producción (usar `management.server.port`, Spring Security y restringir la exposición de endpoints).
-- Añadir una tarea de scrape en Prometheus para recopilar métricas desde `/actuator/prometheus` en el entorno de monitorización.
-- Opcional: integrar SpotBugs, SonarCloud u otros analizadores en CI para reglas de calidad más estrictas.
-
 Archivos relevantes
 ------------------
 - Implementación principal: `src/main/java/com/tumipay`.
@@ -164,13 +158,4 @@ Archivos relevantes
 - Docker: `Dockerfile`, `docker-compose.yml`.
 - CI: `.github/workflows/ci.yml`.
 
-Siguientes mejoras recomendadas
-------------------------------
-- Añadir tests de integración que levantan contexto completo (`@SpringBootTest` + `@AutoConfigureMockMvc`) y usen la DB en memoria o Postgres de CI.
-- Centralizar códigos de error en una clase/enum y usar i18n para mensajes.
-- Añadir métricas/healthchecks y un `Makefile` para tareas comunes.
-
-Contacto
---------
-- Este repo contiene los archivos de la entrega técnica y la documentación añadida.
 
